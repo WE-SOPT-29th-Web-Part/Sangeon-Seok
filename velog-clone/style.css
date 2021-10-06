@@ -1,0 +1,317 @@
+@import url(./Reset.css);
+
+body {
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  color: #212529;
+}
+
+.header__logo {
+  color: #343a40;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  color: #212529;
+}
+
+.header__nav .search {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 0.75rem;
+}
+
+.header__nav .search:hover {
+  background: rgba(0, 0, 0, 0.043);
+}
+
+.header__nav .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: rgb(52, 58, 64);
+  color: white;
+  transition: all 0.125s ease-in 0s;
+  cursor: pointer;
+}
+
+.header__nav .login:hover {
+  background: rgb(134, 142, 150);
+}
+
+.header__nav .login:focus {
+  box-shadow: rgb(0 0 0 / 19%) 0px 2px 12px;
+}
+
+.main__nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;
+}
+
+.main__nav .category-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  -webkit-box-align: center;
+}
+
+.main__nav .category {
+  position: relative;
+  display: flex;
+  width: 14rem;
+}
+
+.main__nav .category div {
+  width: 7rem;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  text-decoration: none;
+  color: rgb(134, 142, 150);
+  height: 3rem;
+  cursor: pointer;
+}
+
+.main__nav .category .active {
+  color: rgb(52, 58, 64);
+  font-weight: bold;
+  border-bottom: 2px solid rgb(52, 58, 64);
+}
+
+.main__nav .category span {
+  margin-right: 0.5rem;
+}
+
+.main__nav .filter {
+  background: white;
+    height: 2rem;
+    width: 6rem;
+    border-radius: 4px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-weight: 600;
+    color: rgb(73, 80, 87);
+    font-size: 0.875rem;
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 4px;
+    cursor: pointer;
+}
+
+.main__nav .dropdown {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.main__nav .dropdown span {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: rgb(134, 142, 150);
+  margin-right: 0.5rem;
+}
+
+.main__section-1 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.main__section-1 .card {
+  width: 20rem;
+  background: white;
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0 / 4%) 0px 4px 16px 0px;
+  transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__section-1 .card__img {
+  position: relative;
+  width: 100%;
+  padding-top: 52.1921%;
+}
+
+.main__section-1 .card__img img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.main__section-1 .card__content {
+  padding: 1rem;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+}
+
+.main__section-1 .card__content h4 {
+  font-size: 1rem;
+  margin: 0px 0px 0.25rem;
+  line-height: 1.5;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: rgb(33, 37, 41);
+}
+
+.main__section-1 .card__content p {
+  margin: 0px 0px 1.5rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  height: 3.9375rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgb(73, 80, 87);
+}
+
+.main__section-1 .card__content-sub {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgb(134, 142, 150);
+}
+
+.main__section-1 .card__intro {
+  padding: 0.625rem 1rem;
+  border-top: 1px solid rgb(248, 249, 250);
+  display: flex;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.main__section-1 .card__intro-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.main__section-1 .card__intro-img {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+  margin-right: 0.5rem;
+}
+
+.main__section-1 .card__intro-nickname {
+  color: rgb(134, 142, 150);
+}
+
+.main__section-1 .card__intro-nickname b {
+  color: rgb(52, 58, 64);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1919px) {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    width: 1350px;
+  }
+}
+
+@media (max-width: 1440px) {
+
+  body {
+    width: 1024px;
+  }
+}
+
+@media (max-width: 1056px) {
+  body {
+    width: calc(100% - 2rem);
+  }
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 748px) {
+  html {}
+}
