@@ -2,6 +2,7 @@
 
 body {
   margin: 0 auto;
+  overflow-y: initial;
   background-color: #f8f9fa;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
 }
@@ -140,6 +141,10 @@ body {
     cursor: pointer;
 }
 
+.main__nav .filter:hover {
+  opacity: 0.8;
+}
+
 .main__nav .dropdown {
   display: flex;
   -webkit-box-align: center;
@@ -172,6 +177,11 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.main__section-1 .card:hover {
+  transform: translateY(-15px);
+  box-shadow: rgb(0 0 0 / 8%) 0rem 0.75rem 1.25rem 0rem;
 }
 
 .main__section-1 .card__img {
@@ -288,7 +298,7 @@ body {
   }
 
   body {
-    width: 1350px;
+    width: 1376px;
   }
 }
 
@@ -303,15 +313,15 @@ body {
   body {
     width: calc(100% - 2rem);
   }
+  .main__section-1 .card {
+    width: calc(50% - 1rem);    
+  }
 }
 
-
-
-
-
-
-
-
-@media screen and (max-width: 748px) {
-  html {}
+@media (max-width: 767px) {
+  .main__section-1 .card {
+      margin: 0px;
+      width: 100%;
+  }
 }
+
