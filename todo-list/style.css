@@ -59,6 +59,7 @@ nav > button {
   background-color: hotpink;
   box-shadow: 0 1px 15px rgba(29, 32, 36, 0.15);
   color: white;
+  cursor: pointer;
 }
 
 nav > button:nth-child(3) {
@@ -218,6 +219,6 @@ input {
   font-size: 30px;
 }
 
-i, .todo__items-check, .allDelete {
+i, .todo__items-check, .allDelete, .todo__items-trash {
   cursor: pointer;
 }
