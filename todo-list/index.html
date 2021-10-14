@@ -1,58 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
 
-    <header class="header">
-      <h1 class="header__title">To Do List</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo-List</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Open+Sans&family=&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/76cfe4f16b.js" crossorigin="anonymous"></script>
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>📑투두리스트</h1>
     </header>
-    <nav class="options">
-      <button class="options__today">오늘만 보기</button>
-      <button class="options__tomorrow">내일만 보기</button>
-      <button class="options__both">함께 보기</button>
+    <nav>
+      <button class="nav__today">오늘만 보기</button>
+      <button class="nav__tomorrow">내일만 보기</button>
+      <button class="nav__together">모두 보기</button>
+      <!-- querySelectorAll로 할지 하나하나 가지고 올지 -->
     </nav>
-    <main class="todos">
-      <section class="todos__today">
-        <h2 class="todos__header">오늘 할 일</h2>
-        <ul class="todos__items">
-          <li class="todos__item">
-            <div class="todos__name">HTML 공부</div>
-            <button class="todos__delete"></button>
-          </li>
-          <li class="todos__item">
-            <div class="todos__name">CSS 공부</div>
-            <button class="todos__delete"></button>
-          </li>
-        </ul>
-        <input class="todos__input" type="text" />
-        <div class="todos__btn-container">
-          <button class="todos__btn"></button>
+    <main>
+      <section class="todo todo__today open">
+        <div class="todo__header">
+          <h2>오늘</h2>
         </div>
+        <ul class="todo__items">
+          <!-- <li class="done">
+              <span class="material-icons todo__items-like">
+                favorite
+              </span>
+              <span class="todo__items-title">JavaScript 공부</span>
+              <span class="material-icons todo__items-check">
+                check
+              </span>
+              <span class="material-icons todo__items-trash trashBtn">
+                close
+              </span>
+            </li> -->
+        </ul>
+        <input type="text">
+        <div class="todo__plus">
+          <i class="fas fa-plus-circle plusBtn"></i>
+        </div>
+        <span class="material-icons allDelete">
+          delete_sweep
+        </span>
       </section>
-      <section class="todos__tomorrow">
-        <h2 class="todos__header">내일 할 일</h2>
-        <ul class="todos__items">
-          <li class="todos__item">
-            <div class="todos__name">JavaScript 공부</div>
-            <button class="todos__delete"></button>
-          </li>
-          <li class="todos__item">
-            <div class="todos__name">React 공부</div>
-            <button class="todos__delete"></button>
-          </li>
-        </ul>
-        <input class="todos__input" type="text" />
-        <div class="todos__btn-container">
-          <button class="todos__btn"></button>
+      <section class="todo todo__tomorrow open">
+        <div class="todo__header">
+          <h2>내일</h2>
         </div>
+        <ul class="todo__items">
+          <!-- <li class="done">
+              <span class="material-icons todo__items-like">
+                favorite
+              </span>
+              <span class="todo__items-title">JavaScript 공부</span>
+              <span class="material-icons todo__items-check">
+                check
+              </span>
+              <i class="fas fa-trash-alt trashBtn"></i>
+            </li> -->
+        </ul>
+        <input type="text">
+        <div class="todo__plus">
+          <i class="fas fa-plus-circle plusBtn"></i>
+        </div>
+        <span class="material-icons allDelete">
+          delete_sweep
+        </span>
       </section>
     </main>
-    <footer class="footer">SOPT 29th Web Part</footer>
-  </body>
+    <footer>SOPT 29th Web Part</footer>
+  </div>
+</body>
+
 </html>
