@@ -1,6 +1,10 @@
 const filter = document.querySelector('.filter')
 const filterItems = document.querySelector(".filter-content")
 const filterItem = document.querySelectorAll('.filter-content li')
+const cards = document.querySelectorAll('.card')
+const modal = document.querySelector(".modal")
+const modalItem = document.querySelector(".modal-item")
+const modalCloseBtn = document.querySelector(".modal-close")
 
 
 // filter 클릭 시, filter-content가 drop.
@@ -29,9 +33,35 @@ const activeFilter = (e) => {
   }
 }
 
+// card 클릭 시, modal 생성
+const clickCard = (e) => {
+    modal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+
+    if (modalItem.children.length === 1) {
+    const modalCard = document.createElement("div");
+    modalCard.classList.add("card");
+    modalItem.appendChild(modalCard);
+  
+    const currentCard = e.target.closest(".card")
+    modalCard.innerHTML = currentCard.innerHTML ;
+  }
+
+}
+
+// modal-close 클릭 시, modal 닫기
+const closeModal = () => {
+  modal.classList.add("hidden")
+  document.body.style.overflow = "visible";
+}
+
+
 filter.addEventListener("click", clickFilter);
 for (const item of filterItem) {
   item.addEventListener("click", (e) => {activeFilter(e)});
 }
 
-
+for (const card of cards) {
+  card.addEventListener("click", clickCard);
+}
+modalCloseBtn.addEventListener("click", closeModal);

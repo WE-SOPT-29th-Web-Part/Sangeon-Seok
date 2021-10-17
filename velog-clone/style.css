@@ -207,7 +207,7 @@ body {
   margin-top: 2rem;
 }
 
-.main__section-1 .card {
+.card {
   display: flex;
   flex-direction: column;
   width: 20rem;
@@ -217,20 +217,21 @@ body {
   background: white;
   overflow: hidden;
   transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
+  cursor: pointer;
 }
 
-.main__section-1 .card:hover {
+.card:hover {
   box-shadow: rgb(0 0 0 / 8%) 0rem 0.75rem 1.25rem 0rem;
   transform: translateY(-15px);
 }
 
-.main__section-1 .card__img {
+.card__img {
   position: relative;
   width: 100%;
   padding-top: 52.1921%;
 }
 
-.main__section-1 .card__img img {
+.card__img img {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -240,14 +241,14 @@ body {
   object-fit: cover;
 }
 
-.main__section-1 .card__content {
+.card__content {
   display: flex;
   flex: 1 1 0%;
   flex-direction: column;
   padding: 1rem;
 }
 
-.main__section-1 .card__content h4 {
+.card__content h4 {
   margin: 0px 0px 0.25rem;
   line-height: 1.5;
   white-space: nowrap;
@@ -258,7 +259,7 @@ body {
   overflow: hidden;
 }
 
-.main__section-1 .card__content p {
+.card__content p {
   display: -webkit-box;
   margin: 0px 0px 1.5rem;
   line-height: 1.5;
@@ -273,13 +274,13 @@ body {
   overflow: hidden;
 }
 
-.main__section-1 .card__content-sub {
+.card__content-sub {
   line-height: 1.5;
   font-size: 0.75rem;
   color: rgb(134, 142, 150);
 }
 
-.main__section-1 .card__intro {
+.card__intro {
   display: flex;
   justify-content: space-between;
   padding: 0.625rem 1rem;
@@ -289,7 +290,7 @@ body {
   font-size: 0.75rem;
 }
 
-.main__section-1 .card__intro-link {
+.card__intro-link {
   display: flex;
   align-items: center;
   -webkit-box-align: center;
@@ -297,7 +298,7 @@ body {
   color: inherit;
 }
 
-.main__section-1 .card__intro-img {
+.card__intro-img {
   display: block;
   width: 1.5rem;
   height: 1.5rem;
@@ -306,17 +307,67 @@ body {
   object-fit: cover;
 }
 
-.main__section-1 .card__intro-nickname {
+.card__intro-nickname {
   color: rgb(134, 142, 150);
 }
 
-.main__section-1 .card__intro-nickname b {
+.card__intro-nickname b {
   color: rgb(52, 58, 64);
 }
 
 
-/* 반응형 mediaQuery */
+/* 모달창 */
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(134, 142, 150, 0.6);
+}
+
+.modal-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  height: max-content;
+  padding: 15px;
+}
+
+.modal-item .card {
+  margin-bottom: 1rem;
+}
+
+.modal-item .card:hover {
+  transform: translateY(0);
+}
+
+.modal-close {
+  width: 1.8rem;
+  height: 1.8rem;
+  border: none;
+  background-color: #fefefe;
+  border-radius: 50%;
+  margin: 0 auto;
+  order: 1;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 반응형 mediaQuery */
 
 @media (max-width: 1919px) {
   html {
