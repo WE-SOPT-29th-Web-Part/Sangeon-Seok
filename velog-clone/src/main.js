@@ -53,6 +53,7 @@ const clickCard = (e) => {
 const closeModal = () => {
   modal.classList.add("hidden")
   document.body.style.overflow = "visible";
+  modalItem.lastChild.remove();
 }
 
 
