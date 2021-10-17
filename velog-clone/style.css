@@ -48,7 +48,7 @@ body {
   background: rgba(0, 0, 0, 0.043);
 }
 
-.header__nav .login {
+.header__nav .write {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,11 +66,11 @@ body {
   cursor: pointer;
 }
 
-.header__nav .login:hover {
+.header__nav .write:hover {
   background: rgb(134, 142, 150);
 }
 
-.header__nav .login:focus {
+.header__nav .write:focus {
   box-shadow: rgb(0 0 0 / 19%) 0px 2px 12px;
 }
 
@@ -365,6 +365,42 @@ body {
 
 .hidden {
   display: none;
+}
+
+/* tag */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  height: 2rem;
+  margin-top: 0.875rem;
+  margin-right: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 1rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: rgb(12, 166, 120);
+  text-decoration: none;
+  background: rgb(241, 243, 245);
+  cursor: pointer;
+}
+
+.tag__input {
+  height: 2rem;
+  margin-top: 0.875rem;
+  margin-right: 0.875rem;
+  padding-top: 0.3rem;
+  padding-left: 1rem;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  box-shadow: rgb(0 0 0 / 19%) 0px 2px 12px;
+}
+
+.tag__input:focus {
+  box-shadow: rgb(0 0 0 / 19%) 0px 2px 12px;
 }
 
 /* 반응형 mediaQuery */
