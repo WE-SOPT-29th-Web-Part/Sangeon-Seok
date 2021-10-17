@@ -52,6 +52,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: max-content;
   height: 2rem;
   padding: 0 1rem;
   border: none;
@@ -149,7 +150,7 @@ body {
   position: absolute;
   right: 0px;
   top: 100%;
-  display: none;
+  visibility: hidden;
   z-index: 100;
   width: 12rem;
   margin-top: 0.5rem;
@@ -158,6 +159,10 @@ body {
   color: rgb(33, 37, 41);
   transform: scale(1);
   transform-origin: right top;
+}
+
+.main__nav .filter-content.visible {
+  visibility: visible;
 }
 
 .main__nav .filter-content ul {

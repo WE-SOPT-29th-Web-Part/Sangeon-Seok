@@ -8,13 +8,14 @@ const modalCloseBtn = document.querySelector(".modal-close")
 
 
 // filter 클릭 시, filter-content가 drop.
-// classList.toggle로도 구현 가능하지만 다른 방법으로 해봄.
 const clickFilter = () => {
-  if(filterItems.style.display === "none"){
-      filterItems.style.display = "block";
-  } else {
-      filterItems.style.display = "none";
-  }
+  filterItems.classList.toggle("visible");
+
+  // if (filterItems.style.display === "none") {
+  //     filterItems.style.display = "block";
+  // } else {
+  //     filterItems.style.display = "none";
+  // } 오류 떴던 부분 - 두 번째 클릭부터 filterItems가 등장
 }
 
 // filter-content의 li 클릭 시, filter 글자 변경 및 li 색 변경
@@ -27,7 +28,7 @@ const activeFilter = (e) => {
       filterItem.forEach((item)=>{
         item.classList.remove("active");
         e.target.classList.add("active");
-        filterItems.style.display = "none";
+        filterItems.classList.remove("visible");
       })
     }
   }
@@ -46,7 +47,6 @@ const clickCard = (e) => {
     const currentCard = e.target.closest(".card")
     modalCard.innerHTML = currentCard.innerHTML ;
   }
-
 }
 
 // modal-close 클릭 시, modal 닫기
@@ -56,12 +56,15 @@ const closeModal = () => {
 }
 
 
+// eventListener 모음
 filter.addEventListener("click", clickFilter);
+
 for (const item of filterItem) {
-  item.addEventListener("click", (e) => {activeFilter(e)});
+  item.addEventListener("click", activeFilter);
 }
 
 for (const card of cards) {
   card.addEventListener("click", clickCard);
 }
+
 modalCloseBtn.addEventListener("click", closeModal);
