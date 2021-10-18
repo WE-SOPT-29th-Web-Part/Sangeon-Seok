@@ -1,10 +1,20 @@
 const filter = document.querySelector('.filter')
 const filterItems = document.querySelector(".filter-content")
 const filterItem = document.querySelectorAll('.filter-content li')
+const cardWrapper = document.querySelector('.card__wrapper')
 const cards = document.querySelectorAll('.card')
 const modal = document.querySelector(".modal")
 const modalItem = document.querySelector(".modal-item")
 const modalCloseBtn = document.querySelector(".modal-close")
+
+const prevBtn = document.querySelector('#previousBtn')
+const nextBtn = document.querySelector('#nextBtn')
+
+let counter = 1;
+let size = cards[0].clientWidth;
+console.log(cards[0].clientWidth)
+
+// cardWrapper.style.transform = `translateX(${-size * counter}px) `
 
 
 // filter 클릭 시, filter-content가 drop.
@@ -69,3 +79,34 @@ for (const card of cards) {
 }
 
 modalCloseBtn.addEventListener("click", closeModal);
+
+prevBtn.addEventListener('click', () => {
+  if (document.body.offsetWidth <= 1056) {
+    size = cards[0].clientWidth + document.body.offsetWidth / 43;
+    if (counter < -cards.length + 3) return; 
+    cardWrapper.style.transition = "transform 0.4s ease-in-out";
+    counter--;
+    cardWrapper.style.transform = `translateX(${size * counter}px)`
+  } 
+
+  if (document.body.offsetWidth <= 767) {
+    size = cards[0].clientWidth + document.body.offsetWidth / 25;
+    if (counter < -cards.length + 2) return; 
+    cardWrapper.style.transition = "transform 0.4s ease-in-out";
+    counter--;
+    cardWrapper.style.transform = `translateX(${size * counter}px)`
+  }
+})
+
+nextBtn.addEventListener('click', () => {
+  if (document.body.offsetWidth <= 1056) {
+    size = cards[0].clientWidth + document.body.offsetWidth / 43;
+  } else if (document.body.offsetWidth <= 767) {
+    size = cards[0].clientWidth + document.body.offsetWidth / 25;
+  }
+
+  if (counter >= 0) return;
+  cardWrapper.style.transition = "transform 0.4s ease-in-out";
+  counter++;
+  cardWrapper.style.transform = `translateX(${size * counter}px)`
+})
