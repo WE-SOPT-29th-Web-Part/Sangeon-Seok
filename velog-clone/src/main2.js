@@ -10,10 +10,10 @@ const modalCloseBtn = document.querySelector(".modal-close")
 const prevBtn = document.querySelector('#previousBtn')
 const nextBtn = document.querySelector('#nextBtn')
 
-let viewWidth = document.body.parentElement.offsetWidth
-
 let counter = 1;
 let size = cards[0].clientWidth;
+
+// cardWrapper.style.transform = `translateX(${-size * counter}px) `
 
 
 // filter 클릭 시, filter-content가 drop.
@@ -28,10 +28,9 @@ const clickFilter = () => {
 }
 
 // filter-content의 li 클릭 시, filter 글자 변경 및 li 색 변경
-// 하나의 함수 안에 두 개의 기능이 있어 좋지않은 느낌..?
+// 하나의 함수 안에 두개의 기능이 있어 좋지않은 느낌..?
 const activeFilter = (e) => {
   filter.firstElementChild.innerText = e.target.innerText
-
   if (e.target.innerText === filter.firstElementChild.innerText) { 
     e.target.classList.add("active");
     if (e.target.classList.contains("active") === true) {
@@ -81,60 +80,43 @@ for (const card of cards) {
 modalCloseBtn.addEventListener("click", closeModal);
 
 prevBtn.addEventListener('click', () => {
-  if (1056 < viewWidth && viewWidth <= 1424) {
-    if (counter < -cards.length + 4) return;
-    cardWrapper.style.transition = "transform 0.4s ease-in-out";
-    counter--;
-    cardWrapper.style.transform = `translateX(${(size + 50) * counter}px)`
-    return;
-  }
+  const viewWidth = document.body.parentElement.offsetWidth
 
   if (767 < viewWidth && viewWidth <= 1056) {
     if (counter < -cards.length + 3) return; 
+
+    size + viewWidth / 43;
     cardWrapper.style.transition = "transform 0.4s ease-in-out";
     counter--;
-    cardWrapper.style.transform = `translateX(${(size + viewWidth / 50) * counter}px)`
+    cardWrapper.style.transform = `translateX(${size * counter}px)`
     return;
   } 
 
   if (viewWidth <= 767) {
     if (counter < -cards.length + 2) return; 
+    console.log('hii')
+    size + viewWidth / 24;
     cardWrapper.style.transition = "transform 0.4s ease-in-out";
     counter--;
-    cardWrapper.style.transform = `translateX(${(size + viewWidth / 25.5) * counter}px)`
+    cardWrapper.style.transform = `translateX(${size * counter}px)`
     return;
   }
 
-  if (counter < -cards.length + 5) return; 
+  if (counter < -cards.length + 4) return; 
   cardWrapper.style.transition = "transform 0.4s ease-in-out";
   counter--;
-  cardWrapper.style.transform = `translateX(${(size + 50) * counter}px)`
+  cardWrapper.style.transform = `translateX(${(size + 30) * counter}px)`
 })
 
 nextBtn.addEventListener('click', () => {
-  if (1056 < viewWidth && viewWidth <= 1424) {
-    cardWrapper.style.transition = "transform 0.4s ease-in-out";
-    counter++;
-    cardWrapper.style.transform = `translateX(${(size + 50) * counter}px)`
-    return;
-  } 
-
-  if (767 < viewWidth && viewWidth <= 1056) {
-    cardWrapper.style.transition = "transform 0.4s ease-in-out";
-    counter++;
-    cardWrapper.style.transform = `translateX(${(size + viewWidth / 50) * counter}px)`
-    return;
-  }
-  
-  if (viewWidth <= 767) {
-    cardWrapper.style.transition = "transform 0.4s ease-in-out";
-    counter++;
-    cardWrapper.style.transform = `translateX(${(size + viewWidth / 25.5) * counter}px)`
-    return;
+  if (document.body.parentElement.offsetWidth <= 1056) {
+    size + document.body.parentElement.offsetWidth / 43;
+  } else if (document.body.parentElement.offsetWidth <= 767) {
+    size + document.body.parentElement.offsetWidth / 25;
   }
 
   if (counter >= 0) return;
   cardWrapper.style.transition = "transform 0.4s ease-in-out";
   counter++;
-  cardWrapper.style.transform = `translateX(${(size + 50) * counter}px)`
+  cardWrapper.style.transform = `translateX(${size * counter}px)`
 })
