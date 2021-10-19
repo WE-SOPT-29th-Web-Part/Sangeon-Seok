@@ -1,10 +1,93 @@
 @import url(./reset.css);
 
+:root[color-theme='light'] {
+  --background1: #f8f9fa;
+  --background2: #fff;
+  --h1: #343a40;
+  --h4: rgb(33, 37, 41);
+  --nav: rgb(52, 58, 64);
+  --content: rgb(73, 80, 87);
+  --write: rgb(52, 58, 64);
+  --like: #000;
+  --carousel: #343a40;
+}
+
+:root[color-theme='dark'] {
+  --background1: #252525;
+  --background2: #212121;
+  --h1: #fff;
+  --h4: #fff;
+  --nav: #fff;
+  --content: #e1e1e1;
+  --write: #5337f1;
+  --like: #e1e1e1;
+  --carousel: #e1e1e1;
+}
+
+html {
+  background: var(--background1);
+}
+
 body {
   margin: 0 auto;
   overflow-y: initial;
-  background-color: #f8f9fa;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
+}
+
+.checkBox {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.checkBox input {
+  position: relative;
+  z-index: 1;
+  appearance: none;
+}
+
+.checkBox span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(52, 58, 64);
+  border-radius: 80px;
+  transition: 0.5s;
+}
+
+.checkBox input:checked ~ span {
+  background: #5337f1;
+  box-shadow: 0 15px 25px #5337f166;
+}
+
+.checkBox span i {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+.checkBox input:checked ~ span i {
+  color: black;
+  left: 42px
+}
+
+.checkBox .fa-moon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkBox input:checked ~ span i::before {
+  color: #5337f1;
 }
 
 .header {
@@ -16,7 +99,7 @@ body {
 }
 
 .header__logo {
-  color: #343a40;
+  color: var(--h1);
   font-size: 2rem;
   font-weight: 700;
   font-family: 'Ubuntu', sans-serif;
@@ -53,16 +136,16 @@ body {
   justify-content: center;
   align-items: center;
   width: max-content;
-  height: 2rem;
+  height: 2.5rem;
   padding: 0 1rem;
   border: none;
-  border-radius: 1rem;
+  border-radius: 80px;
   outline: none;
   font-size: 1rem;
   font-weight: bold;
   color: white;
   word-break: keep-all;
-  background: rgb(52, 58, 64);
+  background: var(--write);
   transition: all 0.125s ease-in 0s;
   cursor: pointer;
 }
@@ -114,9 +197,9 @@ body {
 }
 
 .main__nav .category .active {
-  border-bottom: 2px solid rgb(52, 58, 64);
+  border-bottom: 2px solid var(--nav);
   font-weight: bold;
-  color: rgb(52, 58, 64);
+  color: var(--nav);
 }
 
 .main__nav .category span {
@@ -219,7 +302,7 @@ body {
   border-radius: 50%;
   box-shadow: rgb(0 0 0 / 19%) 0px 2px 12px;
   font-size: 30px;
-  color: #343a40;
+  color: var(--carousel);
   cursor: pointer;
   z-index: 150;
   transform: translateY(-100%);
@@ -239,7 +322,7 @@ body {
   border-radius: 50%;
   box-shadow: rgb(0 0 0 / 19%) 0px 2px 12px;
   font-size: 30px;
-  color: #343a40;
+  color: var(--carousel);
   cursor: pointer;
   z-index: 50;
   transform: translateY(-100%);
@@ -297,6 +380,7 @@ body {
   flex: 1 1 0%;
   flex-direction: column;
   padding: 1rem;
+  background-color: var(--background2);
 }
 
 .card__content h4 {
@@ -305,7 +389,7 @@ body {
   white-space: nowrap;
   word-break: break-word;
   font-size: 1rem;
-  color: rgb(33, 37, 41);
+  color: var(--h4);
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -319,7 +403,7 @@ body {
   -webkit-box-orient: vertical;
   word-break: break-word;
   font-size: 0.875rem;
-  color: rgb(73, 80, 87);
+  color: var(--content);
   overflow-wrap: break-word;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -339,6 +423,7 @@ body {
   -webkit-box-pack: justify;
   line-height: 1.5;
   font-size: 0.75rem;
+  background-color: var(--background2);
 }
 
 .card__intro-link {
@@ -363,9 +448,12 @@ body {
 }
 
 .card__intro-nickname b {
-  color: rgb(52, 58, 64);
+  color: var(--nav);
 }
 
+.card__like-box {
+  color: var(--like);
+}
 
 /* 모달창 */
 

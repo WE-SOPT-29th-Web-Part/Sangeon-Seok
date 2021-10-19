@@ -15,7 +15,33 @@ let viewWidth = document.body.parentElement.offsetWidth
 let counter = 1;
 let size = cards[0].clientWidth;
 
+const checkbox = document.querySelector('.check');
 
+const isUserColorTheme = localStorage.getItem('color-theme');
+
+window.onload = function() {
+  if (isUserColorTheme === 'dark') {
+    checkbox.setAttribute('checked', true);
+    document.documentElement.setAttribute('color-theme', 'dark');
+    localStorage.setItem('color-theme', 'dark');
+
+  } else {
+    document.documentElement.setAttribute('color-theme', 'light');
+    localStorage.setItem('color-theme', 'light');
+  }
+}
+
+checkbox.addEventListener('click', e => {
+  if (e.target.checked) {
+    localStorage.setItem('color-theme', 'dark');
+    document.documentElement.setAttribute('color-theme', 'dark');
+
+  } else {
+    localStorage.setItem('color-theme', 'light');
+    document.documentElement.setAttribute('color-theme', 'light');
+
+  }
+});
 // filter 클릭 시, filter-content가 drop.
 const clickFilter = () => {
   filterItems.classList.toggle("visible");
