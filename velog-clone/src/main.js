@@ -1,3 +1,4 @@
+// js 기능 별로 import 해주려다 일단 하나에 다 작성해부렸습니다,,
 const filter = document.querySelector('.filter')
 const filterItems = document.querySelector(".filter-content")
 const filterItem = document.querySelectorAll('.filter-content li')
@@ -15,33 +16,7 @@ let viewWidth = document.body.parentElement.offsetWidth
 let counter = 1;
 let size = cards[0].clientWidth;
 
-const checkbox = document.querySelector('.check');
 
-const isUserColorTheme = localStorage.getItem('color-theme');
-
-window.onload = function() {
-  if (isUserColorTheme === 'dark') {
-    checkbox.setAttribute('checked', true);
-    document.documentElement.setAttribute('color-theme', 'dark');
-    localStorage.setItem('color-theme', 'dark');
-
-  } else {
-    document.documentElement.setAttribute('color-theme', 'light');
-    localStorage.setItem('color-theme', 'light');
-  }
-}
-
-checkbox.addEventListener('click', e => {
-  if (e.target.checked) {
-    localStorage.setItem('color-theme', 'dark');
-    document.documentElement.setAttribute('color-theme', 'dark');
-
-  } else {
-    localStorage.setItem('color-theme', 'light');
-    document.documentElement.setAttribute('color-theme', 'light');
-
-  }
-});
 // filter 클릭 시, filter-content가 drop.
 const clickFilter = () => {
   filterItems.classList.toggle("visible");
@@ -54,7 +29,6 @@ const clickFilter = () => {
 }
 
 // filter-content의 li 클릭 시, filter 글자 변경 및 li 색 변경
-// 하나의 함수 안에 두 개의 기능이 있어 좋지않은 느낌..?
 const activeFilter = (e) => {
   filter.firstElementChild.innerText = e.target.innerText
 
@@ -106,6 +80,8 @@ for (const card of cards) {
 
 modalCloseBtn.addEventListener("click", closeModal);
 
+
+// carousel 반응형. 너무 하드 코딩이다;;
 prevBtn.addEventListener('click', () => {
   if (1056 < viewWidth && viewWidth <= 1424) {
     if (counter < -cards.length + 4) return;
@@ -164,3 +140,33 @@ nextBtn.addEventListener('click', () => {
   counter++;
   cardWrapper.style.transform = `translateX(${(size + 50) * counter}px)`
 })
+
+
+// 다크모드
+const checkbox = document.querySelector('.check');
+
+const isUserColorTheme = localStorage.getItem('color-theme');
+
+window.onload = function() {
+  if (isUserColorTheme === 'dark') {
+    checkbox.setAttribute('checked', true);
+    document.documentElement.setAttribute('color-theme', 'dark');
+    localStorage.setItem('color-theme', 'dark');
+
+  } else {
+    document.documentElement.setAttribute('color-theme', 'light');
+    localStorage.setItem('color-theme', 'light');
+  }
+}
+
+checkbox.addEventListener('click', e => {
+  if (e.target.checked) {
+    localStorage.setItem('color-theme', 'dark');
+    document.documentElement.setAttribute('color-theme', 'dark');
+
+  } else {
+    localStorage.setItem('color-theme', 'light');
+    document.documentElement.setAttribute('color-theme', 'light');
+
+  }
+});
