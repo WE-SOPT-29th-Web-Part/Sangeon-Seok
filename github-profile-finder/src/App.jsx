@@ -1,31 +1,24 @@
 import "./App.css";
-import Header from "./components/Header";
-import SearchBar from "./components/SearchBar";
-import Result from "./components/Result";
 
 import styled from "styled-components";
-
-import { useState } from "react";
-import { client } from "./api";
+import React, { useState, useRef } from "react";
+import Header from './components/Header';
+import SearchBar from './components/SearchBar';
+import Result from './components/Result';
 
 function App() {
-  const [userInfo, setUserInfo] = useState({ status: "idle", data: null });
-
-  const getUserInfo = async (user) => {
-    setUserInfo({ ...userInfo, status: "pending" });
-    try {
-      const { data } = await client.get(`/${user}`);
-      setUserInfo({ ...userInfo, status: "resolved", data });
-    } catch (e) {
-      setUserInfo({ ...userInfo, status: "rejected", data: null });
-    }
-  };
+  const [userInfo, setUserInfo] = useState({});
 
   return (
     <StyledRoot>
       <Header />
-      <SearchBar getUserInfo={getUserInfo} />
-      <Result userInfo={userInfo} setUserInfo={setUserInfo} />
+      <SearchBar setUserInfo={setUserInfo}/>
+      {
+        userInfo.login
+        ? <Result userInfo={userInfo} setUserInfo={setUserInfo}/>
+        : null // JSX에서 null은 텅빈 HTML 태그를 뜻함.
+      }
+
     </StyledRoot>
   );
 }

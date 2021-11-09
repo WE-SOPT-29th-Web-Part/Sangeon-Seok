@@ -1,46 +1,29 @@
-import React from "react";
-import "../index.css";
+import React, {useEffect} from 'react'
 
-const DateInput = ({ year, month, date, setYear, setMonth, setDate }) => {
-  const handleChange = (e, setState) => {
-    setState(e.target.value);
-  };
+const DateInput = ({year, month, date, setYear, setMonth, setDate}) => {
+  const inputChange = (e, setDay) => {
+    setDay(e.target.value)
+  }
 
-  const makeDateToday = () => {
-    const now = new Date();
-    setYear(now.getFullYear());
-    setMonth(now.getMonth() + 1);
-    setDate(now.getDate());
-  };
+  const handleToday = () => {
+    const today = new Date()
+    setYear(today.getFullYear())
+    setMonth(today.getMonth() + 1)
+    setDate(today.getDate())
+  }
 
   return (
-    <div className="date-input__container">
-      <button onClick={makeDateToday}>오늘</button>
-      <div className="date-input__from">
-        <input
-          type="text"
-          className="date-input date-input__year"
-          onChange={(e) => handleChange(e, setYear)}
-          value={year || ""}
-        />
-        년
-        <input
-          type="text"
-          className="date-input date-input__month"
-          onChange={(e) => handleChange(e, setMonth)}
-          value={month || ""}
-        />
-        월
-        <input
-          type="text"
-          className="date-input date-input__day"
-          onChange={(e) => handleChange(e, setDate)}
-          value={date || ""}
-        />
-        일을 기준으로
+    <div>
+      <div id="dateInput">
+        <button onClick={handleToday}>오늘</button>
+        <div>
+          <input type="text" value={year} onChange={(e) => inputChange(e, setYear)}/>년 
+          <input type="text" value={month} onChange={(e) => inputChange(e, setMonth)}/>월
+          <input type="text" value={date} onChange={(e) => inputChange(e, setDate)}/>을 기준으로
+        </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DateInput;
+export default DateInput

@@ -1,41 +1,31 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, {useState} from 'react'
+import styled from 'styled-components'
+import axios from 'axios'
 
-const SearchBar = ({ getUserInfo }) => {
-  const [user, setUser] = useState();
-  const [userList, setUserList] = useState([]);
+const SearchBar = ({setUserInfo}) => {
+  const [user, setUser] = useState("")
 
-  const handleChange = (e) => {
-    setUser(e.target.value);
-  };
-  const handleSubmit = (e) => {
-    // submit시 새로고침 되는 현상 방지
+  const changeInput = (e) => {
+    setUser(e.target.value)
+  }
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // user API 받아오기
-    getUserInfo(user);
-
-    // 중복될 때
-    if (userList.includes(user)) {
-      setUser("");
-      return;
-    }
-  };
+    const {data} = await axios.get(`https://api.github.com/users/${user}`)
+    setUserInfo(data)
+    setUser("")
+  }
 
   return (
-    <>
+    <div>
       <StyledForm onSubmit={handleSubmit}>
-        <StyledInput
-          type="text"
-          placeholder="Github 프로필을 검색해보세요."
-          onChange={handleChange}
-          value={user || ""}
-        />
+        <StyledInput value={user} onChange={changeInput}/>
       </StyledForm>
-    </>
-  );
-};
+    </div>
+  )
+}
 
-export default SearchBar;
+export default SearchBar
+
 
 const StyledForm = styled.form`
   /* margin-bottom: 10px; */
