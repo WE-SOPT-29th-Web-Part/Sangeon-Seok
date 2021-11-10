@@ -4,21 +4,16 @@ import styled from "styled-components";
 import React, { useState, useRef } from "react";
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
-import Result from './components/Result';
+import Result from './components/Result/Result';
 
 function App() {
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({ data: null, status: "idle" });
 
   return (
     <StyledRoot>
       <Header />
       <SearchBar setUserInfo={setUserInfo}/>
-      {
-        userInfo.login
-        ? <Result userInfo={userInfo} setUserInfo={setUserInfo}/>
-        : null // JSX에서 null은 텅빈 HTML 태그를 뜻함.
-      }
-
+      <Result userInfo={userInfo} setUserInfo={setUserInfo}/>
     </StyledRoot>
   );
 }

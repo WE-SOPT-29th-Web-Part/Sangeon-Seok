@@ -1,7 +1,7 @@
-import React, {useState, useRef} from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-const Result = ({userInfo, setUserInfo}) => {
+const Resolve = ({userInfo, setUserInfo}) => {
   const closeModal = () => {
     setUserInfo({})
   }
@@ -30,9 +30,9 @@ const Result = ({userInfo, setUserInfo}) => {
       </Ul>
     </Root>
   )
-}
+};
 
-export default Result
+export default Resolve;
 
 const Root = styled.article`
   display: flex;
