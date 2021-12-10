@@ -36,7 +36,7 @@ export function Profile() {
 const StyledRoot = styled.section`
   margin: auto;
   margin-top: 90px;
-  width: 100%;
+  width: 75%;
 `;
 
 const StyledProfile = styled.div`

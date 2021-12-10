@@ -12,7 +12,7 @@ export function ArticleCard({article}) {
       <Link to={`article/${article.id}`} state={article}>
         {/* to - 어디로 보낼것인가 && state - 어떠한 상태를 보낼 것인가 */}
         {/* 데이터를 싣어보낼 때, Navigate와 Link 모두 사용가능하지만 Link는 a태그를 형성하기에 검색엔진에 노출을 원할 경우, Navigate는 edit등의 검색엔진 노출이 필요 없을 경우에 사용된다.  */}
-      <ImgWrapper ratio="56%">
+      <ImgWrapper ratio="40%">
         {thumbnail && <img src={thumbnail} alt="thumbnail" />}
       </ImgWrapper>
       </Link>

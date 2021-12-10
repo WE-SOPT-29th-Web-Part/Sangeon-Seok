@@ -11,7 +11,7 @@ export function Header() {
   const navigate = useNavigate()
 
   return (
-    <Root>
+    <StyledRoot>
       <StyledLeft onClick={() => navigate("/")}>
         <div></div>
         <span>sopt.log</span>
@@ -26,11 +26,11 @@ export function Header() {
           <ArrowDropDownImage fill="darkgray" />
         </StyledThumbnail>
       </StyledRight>
-    </Root>
+    </StyledRoot>
   );
 };
 
-const Root = styled.header`
+const StyledRoot = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;

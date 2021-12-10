@@ -34,5 +34,6 @@ const StyledRoot = styled.div`
     font-size: inherit;
     cursor: pointer;
     color: rgb(134, 142, 150);
+    margin-right: 1rem;
   }
 `
