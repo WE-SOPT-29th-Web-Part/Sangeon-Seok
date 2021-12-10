@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import { imageClient } from '../../../libs/api';
 import { colors } from "../../../libs/constants/colors";
+import { ImgWrapper } from '../../common/ImgWrapper';
 
 export function PublishViewLeft(props) {
   const { summary, onArticleDataChange } = props;
+  const [ preview, setPreview ] = useState("")
   const MAX_NUM = 150;
 
   const handleChange = (e) => {
@@ -34,6 +36,7 @@ export function PublishViewLeft(props) {
     const imageResponse = await imageClient.post("", formData);
     const imageUrl = imageResponse.data.url;
     onArticleDataChange("thumbnail", imageUrl)
+    setPreview(`${imageUrl}`)
 
     // 이 url을 articleData의 thumbnail에 넣어서 post할 것
     // request body, response body
@@ -44,6 +47,12 @@ export function PublishViewLeft(props) {
     <StyledRoot>
       <h3>포스트 미리보기</h3>
       <input type="file" onChange={handleImageChange}/>
+      { 
+        preview !== "" &&
+        <ImgWrapper ratio="40%">
+          {preview && <img src={preview} alt="thumbnail" />}
+        </ImgWrapper>
+      }
       <textarea
         placeholder="당신의 포스트를 짧게 소개해보세요."
         value={summary}
