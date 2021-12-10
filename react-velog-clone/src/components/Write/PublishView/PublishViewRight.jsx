@@ -1,16 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { colors } from "../../../libs/constants/colors";
 import { StyledButton } from "../ArticleFooter";
 
-const PublishViewRight = ({ createArticle, setIsPublishView }) => {
-  const navigate = useNavigate()
+export function PublishViewRight(props) {
+  const { createArticle, setIsPublishView } = props;
   const handlePost = async () => {
     // await 안 해주면, 비동기 처리되지 않아 곧바로 get 반영되지 않는다.
     await createArticle();
-    navigate("/");
   };
+  
   return (
     <StyledRoot>
       <StyledButton onClick={() => setIsPublishView(false)}>
@@ -20,8 +19,6 @@ const PublishViewRight = ({ createArticle, setIsPublishView }) => {
     </StyledRoot>
   );
 };
-
-export default PublishViewRight;
 
 const StyledRoot = styled.section`
   width: 100%;

@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
+import { imageClient } from '../../../libs/api';
 import { colors } from "../../../libs/constants/colors";
 
-const PublishViewLeft = ({ summary, handleArticleDataChange }) => {
+export function PublishViewLeft(props) {
+  const { summary, onArticleDataChange } = props;
   const MAX_NUM = 150;
 
   const handleChange = (e) => {
@@ -18,16 +20,30 @@ const PublishViewLeft = ({ summary, handleArticleDataChange }) => {
       const roomSummary = value.slice(summary.length, summary.length + room);
       // 기본 144자에 잘라온 6글자를 더함
       const fullSummary = summary + roomSummary;
-      handleArticleDataChange("summary", fullSummary);
+      onArticleDataChange("summary", fullSummary);
       return;
     }
-    handleArticleDataChange("summary", value);
+    onArticleDataChange("summary", value);
   };
+
+  const handleImageChange = async (e) => {
+    // 서버에 이미지 보내기 (post), 정제된 이미지 url 받아오기 (get)
+    const formData = new FormData();
+    const imageFile = e.target.files[0];
+    formData.append("file", imageFile);
+    const imageResponse = await imageClient.post("", formData);
+    const imageUrl = imageResponse.data.url;
+    onArticleDataChange("thumbnail", imageUrl)
+
+    // 이 url을 articleData의 thumbnail에 넣어서 post할 것
+    // request body, response body
+    // post의 결과값 => response body
+  }
 
   return (
     <StyledRoot>
       <h3>포스트 미리보기</h3>
-      <input type="file"/>
+      <input type="file" onChange={handleImageChange}/>
       <textarea
         placeholder="당신의 포스트를 짧게 소개해보세요."
         value={summary}
@@ -39,8 +55,6 @@ const PublishViewLeft = ({ summary, handleArticleDataChange }) => {
     </StyledRoot>
   );
 };
-
-export default PublishViewLeft;
 
 const StyledRoot = styled.div`
   width: 100%;

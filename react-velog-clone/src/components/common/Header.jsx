@@ -7,7 +7,7 @@ import { colors } from "../../libs/constants/colors";
 import { useNavigate } from "react-router";
 import profileImg from "../../assets/images/mount.png";
 
-const Header = () => {
+export function Header() {
   const navigate = useNavigate()
 
   return (
@@ -29,8 +29,6 @@ const Header = () => {
     </Root>
   );
 };
-
-export default Header;
 
 const Root = styled.header`
   display: flex;

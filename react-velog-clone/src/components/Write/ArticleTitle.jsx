@@ -2,16 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import TextareaAutosize from "react-textarea-autosize";
 
-const ArticleTitle = ({handleArticleDataChange}) => {
+export function ArticleTitle(props) {
+  const { onArticleDataChange, title } = props;
+
   return (
     <Textarea 
+    value = {title}
     placeholder="제목을 입력하세요."
-    onChange={(e) => handleArticleDataChange("title", e.target.value)}
+    onChange={(e) => onArticleDataChange("title", e.target.value)}
     />
   );
 };
-
-export default ArticleTitle;
 
 const Textarea = styled(TextareaAutosize)`
   all: unset;

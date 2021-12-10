@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { client } from '../../libs/api'
-import ArticleCard from './ArticleCard';
+import { ArticleCard } from './ArticleCard';
 
-const ArticleContainer = () => {
+export function ArticleContainer() {
   const [articleData, setArticleData] = useState([])
   const getArticleData = async () => {
     const { data } = await client.get("/article")
@@ -15,7 +15,6 @@ const ArticleContainer = () => {
     getArticleData();
   }, [])
 
-
   return (
     <div>
       {articleData.map((article) => (
@@ -24,5 +23,3 @@ const ArticleContainer = () => {
     </div>
   );
 };
-
-export default ArticleContainer;

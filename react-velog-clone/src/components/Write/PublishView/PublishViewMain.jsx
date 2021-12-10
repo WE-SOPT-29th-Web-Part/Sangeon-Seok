@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from "styled-components";
 import { colors } from "../../../libs/constants/colors";
-import PublishViewLeft from "./PublishViewLeft";
-import PublishViewRight from "./PublishViewRight";
+import { PublishViewLeft } from "./PublishViewLeft";
+import { PublishViewRight } from "./PublishViewRight";
 
-const PublishViewMain = ({
-  summary,
-  handleArticleDataChange,
-  createArticle,
-  isPublishView,
-  setIsPublishView,
-}) => {
+export function PublishViewMain(props) {
+  const {
+    summary,
+    onArticleDataChange,
+    createArticle,
+    isPublishView,
+    setIsPublishView,
+  } = props;
   const [animate, setAnimate] = useState(false);
+
   useEffect(() => {
     let timeoutId = null;
-    if (isPublishView) {
-      setAnimate(true);
-    } else if (!isPublishView && animate) {
+    if (isPublishView) { setAnimate(true); } 
+    else if (!isPublishView && animate) {
       timeoutId = setTimeout(() => {
         setAnimate(false);
       }, 125);
-    }
+    } 
     return () => {
       if (timeoutId) {
         clearTimeout(timeoutId);
@@ -28,11 +29,12 @@ const PublishViewMain = ({
     };
   },  [isPublishView, animate]);
   if (!isPublishView && !animate) return null;
+
   return (
     <StyledRoot isPublishView={isPublishView}>
       <StyledWrapper>
         <PublishViewLeft
-          handleArticleDataChange={handleArticleDataChange}
+          onArticleDataChange={onArticleDataChange}
           summary={summary}
         />
         <StyledCenterLine />
