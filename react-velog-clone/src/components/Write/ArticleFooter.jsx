@@ -4,8 +4,10 @@ import styled from "styled-components";
 import { ReactComponent as ArrowLeftIcon } from "../../assets/icons/arrow_left.svg";
 import { colors } from "../../libs/constants/colors";
 
-const ArticleFooter = ({ setIsPublishView }) => {
+export function ArticleFooter (props) {
+  const { setIsPublishView } = props;
   const navigate = useNavigate()
+
   return (
     <StyledRoot>
       <StyledLeft onClick={() => navigate("/")}>
@@ -23,8 +25,6 @@ const ArticleFooter = ({ setIsPublishView }) => {
     </StyledRoot>
   );
 };
-
-export default ArticleFooter;
 
 const StyledRoot = styled.div`
   display: flex;
@@ -50,6 +50,7 @@ const StyledLeft = styled.button`
     background-color: ${colors.lineGray};
   }
 `;
+
 const StyledRight = styled.div`
   & > button:nth-child(1) {
     background-color: ${colors.lineGray};

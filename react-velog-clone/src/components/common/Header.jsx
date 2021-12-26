@@ -7,11 +7,11 @@ import { colors } from "../../libs/constants/colors";
 import { useNavigate } from "react-router";
 import profileImg from "../../assets/images/mount.png";
 
-const Header = () => {
+export function Header() {
   const navigate = useNavigate()
 
   return (
-    <Root>
+    <StyledRoot>
       <StyledLeft onClick={() => navigate("/")}>
         <div></div>
         <span>sopt.log</span>
@@ -26,13 +26,11 @@ const Header = () => {
           <ArrowDropDownImage fill="darkgray" />
         </StyledThumbnail>
       </StyledRight>
-    </Root>
+    </StyledRoot>
   );
 };
 
-export default Header;
-
-const Root = styled.header`
+const StyledRoot = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;

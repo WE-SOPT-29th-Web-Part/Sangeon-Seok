@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 import { colors } from "../../libs/constants/colors";
-import ArticleContainer from './ArticleContainer';
+import { ArticleContainer } from './ArticleContainer';
 
-const HomeNav = () => {
+export function HomeNav() {
   const [isArticleBottomLine, setIsArticleBottomLine] = useState(true);
 
   const handleClick = (e) => {
@@ -34,8 +34,6 @@ const HomeNav = () => {
     </StyledRoot>
   );
 };
-
-export default HomeNav;
 
 const StyledRoot = styled.nav`
   width: 100%;

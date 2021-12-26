@@ -6,7 +6,8 @@ import { ReactComponent as GithubIcon } from "../../assets/icons/github.svg";
 import { ReactComponent as HomeIcon } from "../../assets/icons/home.svg";
 import { ReactComponent as MailIcon } from "../../assets/icons/mail.svg";
 
-const Profile = () => {
+export function Profile() {
+  
   return (
     <StyledRoot>
       <StyledProfile>
@@ -32,12 +33,10 @@ const Profile = () => {
   );
 };
 
-export default Profile;
-
 const StyledRoot = styled.section`
   margin: auto;
   margin-top: 90px;
-  width: 100%;
+  width: 75%;
 `;
 
 const StyledProfile = styled.div`
