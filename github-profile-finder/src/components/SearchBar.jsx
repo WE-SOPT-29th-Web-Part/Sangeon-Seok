@@ -1,9 +1,12 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import { History } from "./History";
 
-const SearchBar = ({setUserInfo}) => {
+const SearchBar = ({setUserInfo, getUserInfo}) => {
   const [user, setUser] = useState("")
+  const [userList, setUserList] = useState([]);
+  const MAX_NUM = 3;
 
   const changeInput = (e) => {
     setUser(e.target.value)
@@ -35,15 +38,44 @@ const SearchBar = ({setUserInfo}) => {
       }))
       // userInfo 받기 실패 (해당 유저 없음)
     }
-    
-    setUser("")
+
+    // 중복 방지
+    if (userList.includes(user)) {
+      setUser("");
+      return;
+    }
+
+    // history 3개 기준 분기 처리
+    const setNewUserList = () => {
+      if (userList.length >= MAX_NUM) {
+        return [...userList, user].slice(1, 4);
+      }
+      return [...userList, user];
+    };
+
+    const newUserList = setNewUserList();
+    setUserList(newUserList);
+    localStorage.setItem("userList", JSON.stringify(newUserList));
+
+    setUser("");
   }
+
+  useEffect(() => {
+    // 컴포넌트가 mount되었을 때, localStorage 정보를 가지고 옴.
+    localStorage.getItem("userList") &&
+      setUserList(JSON.parse(localStorage.getItem("userList")));
+  }, []);
 
   return (
     <div>
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput value={user} onChange={changeInput}/>
       </StyledForm>
+      <History
+        getUserInfo={getUserInfo}
+        userList={userList}
+        setUserList={setUserList}
+      />
     </div>
   )
 }
